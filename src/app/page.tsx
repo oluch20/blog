@@ -17,13 +17,45 @@ const posts = [
     content:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vero, odit ipsum consequatur beatae perferendis at voluptatibus, repellat porro temporibus accusamus eos vel doloribus ad vitae, voluptatem repellendus praesentium. Voluptatum!",
   },
+  {
+    id: 2,
+    title: "title3",
+    date: "21.05.2026",
+    category: "category3",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vero, odit ipsum consequatur beatae perferendis at voluptatibus, repellat porro temporibus accusamus eos vel doloribus ad vitae, voluptatem repellendus praesentium. Voluptatum!",
+  },
+   {
+    id: 3,
+    title: "title4",
+    date: "21.05.2026",
+    category: "category4",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vero, odit ipsum consequatur beatae perferendis at voluptatibus, repellat porro temporibus accusamus eos vel doloribus ad vitae, voluptatem repellendus praesentium. Voluptatum!",
+  },
+  {
+    id: 4,
+    title: "title5",
+    date: "21.05.2026",
+    category: "category5",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vero, odit ipsum consequatur beatae perferendis at voluptatibus, repellat porro temporibus accusamus eos vel doloribus ad vitae, voluptatem repellendus praesentium. Voluptatum!",
+  },
+  {
+    id: 5,
+    title: "title6",
+    date: "21.05.2026",
+    category: "category6",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vero, odit ipsum consequatur beatae perferendis at voluptatibus, repellat porro temporibus accusamus eos vel doloribus ad vitae, voluptatem repellendus praesentium. Voluptatum!",
+  }
 ];
 
 export default function Home() {
   return (
     <>
       <div className="h-screen items-center justify-center bg-slate-900 flex">
-        <div className="bg-slate-800 flex flex-col items-center justify-center w-1/3 gap-5">
+        <div className="bg-slate-800 flex flex-col items-center justify-start w-1/3 gap-5 min-h-3/5 max-h-200 overflow-y-auto py-6">
           {posts.map((post) => (
             <Card
               key={post.id}
