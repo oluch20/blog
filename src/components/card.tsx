@@ -10,7 +10,7 @@ export function Card({
   content: string;
 }) {
   return (
-    <div className="min-h-50 flex flex-col bg-slate-700 rounded-3xl">
+    <div className="min-h-50 w-full flex flex-col bg-slate-700 rounded-3xl">
       <div className="h-2/7 items-center justify-center flex flex-col bg-slate-600 rounded-t-3xl">
         <div className="h-1/3 w-2/3 flex flex-row items-center justify-between text-slate-300">
           <div>{category}</div>

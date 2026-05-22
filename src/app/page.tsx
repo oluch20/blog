@@ -1,57 +1,9 @@
 import { Card } from "@/components/card";
+import { getPosts } from "@/components/quarry";
 
-const posts = [
-  {
-    id: 0,
-    title: "title1",
-    date: "21.05.2026",
-    category: "category1",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vero, odit ipsum consequatur beatae perferendis at voluptatibus, repellat porro temporibus accusamus eos vel doloribus ad vitae, voluptatem repellendus praesentium. Voluptatum!",
-  },
-  {
-    id: 1,
-    title: "title2",
-    date: "21.05.2026",
-    category: "category2",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vero, odit ipsum consequatur beatae perferendis at voluptatibus, repellat porro temporibus accusamus eos vel doloribus ad vitae, voluptatem repellendus praesentium. Voluptatum!",
-  },
-  {
-    id: 2,
-    title: "title3",
-    date: "21.05.2026",
-    category: "category3",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vero, odit ipsum consequatur beatae perferendis at voluptatibus, repellat porro temporibus accusamus eos vel doloribus ad vitae, voluptatem repellendus praesentium. Voluptatum!",
-  },
-   {
-    id: 3,
-    title: "title4",
-    date: "21.05.2026",
-    category: "category4",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vero, odit ipsum consequatur beatae perferendis at voluptatibus, repellat porro temporibus accusamus eos vel doloribus ad vitae, voluptatem repellendus praesentium. Voluptatum!",
-  },
-  {
-    id: 4,
-    title: "title5",
-    date: "21.05.2026",
-    category: "category5",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vero, odit ipsum consequatur beatae perferendis at voluptatibus, repellat porro temporibus accusamus eos vel doloribus ad vitae, voluptatem repellendus praesentium. Voluptatum!",
-  },
-  {
-    id: 5,
-    title: "title6",
-    date: "21.05.2026",
-    category: "category6",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vero, odit ipsum consequatur beatae perferendis at voluptatibus, repellat porro temporibus accusamus eos vel doloribus ad vitae, voluptatem repellendus praesentium. Voluptatum!",
-  }
-];
+export default async function Home() {
+  const posts = await getPosts();
 
-export default function Home() {
   return (
     <>
       <div className="h-screen items-center justify-center bg-slate-900 flex">
@@ -60,9 +12,9 @@ export default function Home() {
             <Card
               key={post.id}
               title={post.title}
-              date={post.date}
+              date={post.date.toLocaleDateString("pl-PL")}
               category={post.category}
-              content={post.content}
+              content={post.content ?? ""}
             />
           ))}
         </div>
