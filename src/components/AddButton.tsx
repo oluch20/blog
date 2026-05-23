@@ -18,7 +18,7 @@ export function AddButton({ className }: AddButtonProps) {
 
   return (
     <button className={cn("", className)}type="button" onClick={toggle}>
-      dodaj
+      dodaj post
     </button>
   );
 }

@@ -16,9 +16,7 @@ export default async function Home() {
             <AddPanel />
           </AddButtonProvider>
 
-          <div className="bg-red-600 rounded-2xl text-xl p-2 text-slate-200">
-            usuń
-          </div>
+          
         </div>
         <div className="bg-slate-800 flex flex-col items-center justify-start w-1/3 gap-5 min-h-3/5 max-h-200 overflow-y-auto py-6">
           {posts.map((post) => (
