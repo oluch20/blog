@@ -4,6 +4,8 @@ import { AddButtonProvider } from "@/components/context";
 import { getPosts } from "@/components/Posts/quarry";
 import AddPanel from "@/components/addPanel";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const posts = await getPosts();
 
