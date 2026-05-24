@@ -40,7 +40,6 @@ export  function Card({
       </div>
       <div className="h-1/3 w-full flex flex-row items-center justify-center">
       <img src="ready_or_not.png" alt="placeholder" className="w-full h-40 object-cover rounded-b-3xl" />
-
       </div>
       
       <MyButton
