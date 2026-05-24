@@ -4,8 +4,10 @@ import { getPosts } from "@/components/Posts/quarry";
 import AddPanel from "@/components/addPanel";
 import { PostProvider } from "@/components/context/postContext";
 import { PostPanel } from "@/components/Posts/PostPanel";
+import { connection } from "next/server";
 
 export default async function Home() {
+  await connection();
   const posts = await getPosts();
   const postsForContext = posts.map((post) => ({
     ...post,
