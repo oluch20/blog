@@ -1,9 +1,9 @@
 import { AddButton } from "@/components/Posts/AddButton";
-import { Card } from "@/components/card";
 import { AddButtonProvider } from "@/components/context/addButtonContext";
 import { getPosts } from "@/components/Posts/quarry";
 import AddPanel from "@/components/addPanel";
 import { PostProvider } from "@/components/context/postContext";
+import { PostPanel } from "@/components/Posts/PostPanel";
 
 export default async function Home() {
   const posts = await getPosts();
@@ -15,26 +15,17 @@ export default async function Home() {
   return (
     <>
       <div className="h-screen items-center justify-center bg-slate-900 flex flex-col gap-5">
-        <div className="flex flex-row items-center justify-between w-1/3">
-          <AddButtonProvider>
-            <PostProvider posts={postsForContext}>
+        <PostProvider posts={postsForContext}>
+          <div className="flex flex-row items-center justify-between w-1/3">
+            <AddButtonProvider>
               <AddButton className="bg-green-600 rounded-2xl text-xl p-2 text-slate-200 cursor-pointer hover:bg-green-700 active:bg-green-800" />
               <AddPanel />
-            </PostProvider>
-          </AddButtonProvider>
-        </div>
-        <div className="bg-slate-800 flex flex-col items-center justify-start w-1/3 gap-5 min-h-3/5 max-h-200 overflow-y-auto py-6">
-          {posts.map((post) => (
-            <Card
-              id={post.id}
-              key={post.id}
-              title={post.title}
-              date={post.date.toLocaleDateString("pl-PL")}
-              category={post.category}
-              content={post.content ?? ""}
-            />
-          ))}
-        </div>
+            </AddButtonProvider>
+          </div>
+          <div className="bg-slate-800 flex flex-col items-center justify-start w-1/3 gap-5 min-h-3/5 max-h-200 overflow-y-auto py-6">
+            <PostPanel />
+          </div>
+        </PostProvider>
       </div>
     </>
   );

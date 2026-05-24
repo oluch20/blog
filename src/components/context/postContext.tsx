@@ -10,9 +10,10 @@ export interface Post {
   date: string;
 }
 
-export type PostContextType = {
+ type PostContextType = {
   posts: Post[];
-  add: () => void;
+  add: (post: Post) => void;
+  remove: (id: number) => void;
 };
 
 export const PostContext = createContext<PostContextType | undefined>(
@@ -26,10 +27,18 @@ export function PostProvider({
   children: React.ReactNode;
   posts?: Post[];
 }) {
-  const [currentPosts, addPosts] = useState([]);
+  const [currentPosts, addPosts] = useState<Post[]>(posts);
+
+  const add = (post: Post) => {
+    addPosts((oldPosts) => [...oldPosts, post]);
+  }
+
+  const remove = (id: number) => {
+    addPosts((oldPosts) => oldPosts.filter((post) => post.id !== id));
+  };
 
   return (
-    <PostContext.Provider value={{ posts: currentPosts, add: () => addPosts }}>
+    <PostContext.Provider value={{ posts: currentPosts, add, remove }}>
       {children}
     </PostContext.Provider>
   );

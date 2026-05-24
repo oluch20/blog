@@ -1,5 +1,6 @@
 "use client";
-import { useRouter } from "next/navigation";
+
+import { usePosts } from "./context/postContext";
 import { deletePost } from "./Posts/quarry";
 
 export  function Card({
@@ -15,11 +16,11 @@ export  function Card({
   category: string;
   content: string;
 }) {
-  const router = useRouter();
+  const  { remove } = usePosts();
 
   const handleDelete = async (id: number) => {
     await deletePost(id);
-    router.refresh();
+    remove(id);
   };
 
   return (

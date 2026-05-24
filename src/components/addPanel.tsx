@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useAddButton } from "./Posts/AddButton";
 import { addPost } from "./Posts/quarry";
+import { usePosts } from "./context/postContext";
 
 const Category = [
   "Aktualności",
@@ -16,15 +16,22 @@ const Category = [
 
 export default function AddPanel() {
   const { on, toggle } = useAddButton();
-  const router = useRouter();
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
+  const { add } = usePosts();
 
   const handleAddPost = async () => {
-    await addPost(title, category, content);
+    const createdPost = await addPost(title, category, content);
+
+    add({
+      id: createdPost.id,
+      title: createdPost.title,
+      category: createdPost.category,
+      content: createdPost.content,
+      date: createdPost.date.toISOString(),
+    });
     toggle();
-    router.refresh();
     setCategory("");
     setContent("");
     setTitle("");
