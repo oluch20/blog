@@ -20,6 +20,7 @@ export default function AddPanel() {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
+  const [media, setMedia] = useState<File[]>([]);
   const { add } = usePosts();
 
   const handleAddPost = async () => {
@@ -31,6 +32,7 @@ export default function AddPanel() {
       category: createdPost.category,
       content: createdPost.content,
       date: createdPost.date.toISOString(),
+      media: [], 
     });
     toggle();
     setCategory("");
@@ -86,6 +88,21 @@ export default function AddPanel() {
               placeholder="wpisz treść posta"
               onChange={(e) => setContent(e.target.value)}
               value={content}
+            />
+          </div>
+          <div className="bg-slate-600 w-full rounded-xl p-4 flex-1 flex flex-col">
+            <label className="block text-slate-300 text-lg mb-2">Media</label>
+            <input
+              type="file"
+              className="w-full h-full resize-none rounded-2xl p-3 text-base text-slate-900 bg-slate-500"
+              multiple
+              onChange={(e) => {
+                if (e.target.files) {
+                  setMedia(Array.from(e.target.files));
+                }
+              }}
+              alt="Media"
+              
             />
           </div>
         </div>

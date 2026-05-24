@@ -8,6 +8,7 @@ export interface Post {
   category: string;
   content: string | null;
   date: string;
+  media: string[];
 }
 
  type PostContextType = {

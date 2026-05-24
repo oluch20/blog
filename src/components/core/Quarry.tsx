@@ -7,7 +7,7 @@ export async function getPosts() {
   });
 }
 
-export async function addPost(title: string, category: string, content: string) {
+export async function addPostQuarry(title: string, category: string, content: string | null) {
   return prisma.post.create({
     data: {
       title,
