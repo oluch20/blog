@@ -1,5 +1,5 @@
 "use client";
-import { Card } from "@/components/card";
+import { Card } from "@/components/core/Card";
 import { usePosts } from "../context/postContext";
 
 export function PostPanel() {

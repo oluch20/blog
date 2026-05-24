@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { useAddButton } from "./Posts/AddButton";
-import { addPost } from "./Posts/quarry";
+import { useAddButton } from "@/components/core/AddButton";
+import { addPost } from "./core/Quarry";
 import { usePosts } from "./context/postContext";
+import { MyButton } from "./core/MyButton";
 
 const Category = [
   "Aktualności",
@@ -40,13 +41,12 @@ export default function AddPanel() {
   return (
     <div className="bg-black/50 fixed inset-0 z-10 flex items-center justify-center">
       <div className="w-11/12 max-w-3xl h-[70vh] bg-slate-700 rounded-2xl flex flex-col relative p-6">
-        <button
-          type="button"
+        <MyButton
           onClick={toggle}
-          className="flex right-5 top-3 absolute text-2xl text-black/75 bg-red-500 cursor-pointer hover:bg-red-700 active:bg-red-800 rounded-full w-10 h-10 items-center justify-center"
+          className="flex right-5 top-3 absolute text-2xl text-black/75 bg-red-500/75 cursor-pointer hover:bg-red-700/75 active:bg-red-800/75 rounded-full w-10 h-10 items-center justify-center"
         >
           x
-        </button>
+        </MyButton>
         <div className="text-3xl text-slate-300 mt-2">
           Panel dodawania postów
         </div>
@@ -90,21 +90,19 @@ export default function AddPanel() {
           </div>
         </div>
         <div className="mt-4 flex items-center justify-end gap-3">
-          <button
-            type="button"
+          <MyButton
             onClick={toggle}
-            className="px-4 py-2 rounded-md bg-gray-500 text-white hover:bg-gray-600"
+            className="px-4 py-2  bg-gray-500  hover:bg-gray-600"
           >
             Anuluj
-          </button>
-          <button
-            type="button"
-            className="px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          </MyButton>
+          <MyButton
+            className="px-4 py-2  bg-green-600  hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={!title || !category || !content}
             onClick={handleAddPost}
           >
             Dodaj post
-          </button>
+          </MyButton>
         </div>
       </div>
     </div>

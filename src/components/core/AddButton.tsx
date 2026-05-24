@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { AddButtonContext } from "../context/addButtonContext";
 import { cn } from "@/lib/utils";
+import { MyButton } from "./MyButton";
 
 type AddButtonProps = {
   className?: string;
@@ -17,9 +18,9 @@ export function AddButton({ className }: AddButtonProps) {
   const { on, toggle } = useAddButton();
 
   return (
-    <button className={cn("", className)}type="button" onClick={toggle}>
+    <MyButton className={cn("", className)} onClick={toggle}>
       dodaj post
-    </button>
+    </MyButton>
   );
 }
 
