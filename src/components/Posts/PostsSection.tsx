@@ -2,8 +2,8 @@
 
 import { AddButton } from "@/components/core/AddButton";
 import AddPanel from "@/components/AddPanel";
-import { AddButtonProvider } from "@/components/context/addButtonContext";
-import { PostProvider, type Post } from "@/components/context/postContext";
+import { AddButtonProvider } from "@/components/context/AddButtonContext";
+import { PostProvider, type Post } from "@/components/context/PostContext";
 import { PostPanel } from "@/components/Posts/PostPanel";
 
 type PostsSectionProps = {

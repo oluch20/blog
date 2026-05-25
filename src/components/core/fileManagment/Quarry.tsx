@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 export async function getPosts() {
   return prisma.post.findMany({
     orderBy: { date: "desc" },
+    include: { media: true },
   });
 }
 
@@ -21,5 +22,15 @@ export async function addPostQuarry(title: string, category: string, content: st
 export async function deletePost(id: number) {
   return prisma.post.delete({
     where: { id },
+  });
+}
+
+export async function addMedia(url: string, postId: number) {
+  return prisma.media.create({
+    data: {
+      url,
+      postId,
+      alt: "Media",
+    },
   });
 }

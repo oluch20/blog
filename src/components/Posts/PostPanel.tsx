@@ -1,6 +1,6 @@
 "use client";
 import { Card } from "@/components/core/Card";
-import { usePosts } from "../context/postContext";
+import { usePosts } from "../context/PostContext";
 
 export function PostPanel() {
   const { posts } = usePosts();

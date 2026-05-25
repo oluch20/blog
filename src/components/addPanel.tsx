@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useAddButton } from "@/components/core/AddButton";
-import { addPost } from "./core/Quarry";
-import { usePosts } from "./context/postContext";
+import { AddPost } from "./core/fileManagment/AddPost";
+import { usePosts } from "./context/PostContext";
 import { MyButton } from "./core/MyButton";
 
 const Category = [
@@ -24,20 +24,21 @@ export default function AddPanel() {
   const { add } = usePosts();
 
   const handleAddPost = async () => {
-    const createdPost = await addPost(title, category, content);
+    const { post, blob } = await AddPost(title, category, content, media);
 
     add({
-      id: createdPost.id,
-      title: createdPost.title,
-      category: createdPost.category,
-      content: createdPost.content,
-      date: createdPost.date.toISOString(),
-      media: [], 
+      id: post.id,
+      title: post.title,
+      category: post.category,
+      content: post.content,
+      date: post.date.toISOString(),
+      media: [blob],
     });
     toggle();
     setCategory("");
     setContent("");
     setTitle("");
+    setMedia([]);
   };
   if (!on) return null;
   return (
@@ -94,6 +95,7 @@ export default function AddPanel() {
             <label className="block text-slate-300 text-lg mb-2">Media</label>
             <input
               type="file"
+              accept="image/*"
               className="w-full h-full resize-none rounded-2xl p-3 text-base text-slate-900 bg-slate-500"
               multiple
               onChange={(e) => {

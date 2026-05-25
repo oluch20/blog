@@ -1,8 +1,8 @@
 "use client";
 
-import { usePosts } from "@/components/context/postContext";
+import { usePosts } from "@/components/context/PostContext";
 import { MyButton } from "@/components/core/MyButton";
-import { deletePost } from "@/components/core/Quarry";
+import { deletePost } from "@/components/core/fileManagment/Quarry";
 
 export  function Card({
   id,
@@ -10,12 +10,14 @@ export  function Card({
   date,
   category,
   content,
+  media,
 }: {
   id: number;
   title: string;
   date: string;
   category: string;
   content: string;
+  media?: string[];
 }) {
   const  { remove } = usePosts();
 
@@ -39,7 +41,9 @@ export  function Card({
         {content}
       </div>
       <div className="h-1/3 w-full flex flex-row items-center justify-center">
-      <img src="ready_or_not.png" alt="placeholder" className="w-full h-40 object-cover rounded-b-3xl" />
+        {(media ?? []).map((mediaUrl, index) => (
+          <img key={index} src={mediaUrl} alt={`Media ${index}`} className="w-full h-40 object-cover rounded-b-3xl" />
+        ))}
       </div>
       
       <MyButton
