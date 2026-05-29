@@ -1,6 +1,6 @@
 "use client";
 
-import { usePosts } from "@/components/context/PostContext";
+import { usePosts } from "../context/PostContext";
 import { MyButton } from "@/components/core/MyButton";
 import { deletePost } from "./fileManagment/DeletePost";
 
