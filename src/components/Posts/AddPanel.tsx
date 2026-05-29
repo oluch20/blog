@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useAddButton } from "@/components/core/AddButton";
 import { AddPost } from "../core/fileManagment/AddPost";
-import { usePosts } from "../context/PostContext";
+import { usePosts } from "../context/postContext";
 import { MyButton } from "../core/MyButton";
 
 const Category = [
