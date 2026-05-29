@@ -1,7 +1,7 @@
 "use server";
 
 import { addMedia, addPostQuarry } from "./Quarry";
-import { PUT } from "./Blobupload";
+import { PUT } from "./Blob";
 
 export async function AddPost(
   title: string,
@@ -14,8 +14,16 @@ export async function AddPost(
   }
 
   const post = await addPostQuarry(title, category, content);
-  const blob = await PUT(media[0]);
-  await addMedia(blob, post.id);
+  
+  const blobs: string[] = [];
 
-  return { post, blob };
+  for(const m of media) {
+    const name = await PUT(m);
+    await addMedia(name,post.id);
+    blobs.push(name);
+  }
+  //  const blob = await PUT(media[0]);
+  // await addMedia(blob, post.id);
+
+  return { post, blobs };
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { AddButton } from "@/components/core/AddButton";
-import AddPanel from "@/components/AddPanel";
+import AddPanel from "@/components/Posts/AddPanel";
 import { AddButtonProvider } from "@/components/context/AddButtonContext";
 import { PostProvider, type Post } from "@/components/context/PostContext";
 import { PostPanel } from "@/components/Posts/PostPanel";

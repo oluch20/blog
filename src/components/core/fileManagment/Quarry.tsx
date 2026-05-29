@@ -19,7 +19,10 @@ export async function addPostQuarry(title: string, category: string, content: st
   });
 }
 
-export async function deletePost(id: number) {
+export async function deletePostQuarry(id: number) {
+  await prisma.media.deleteMany({
+    where: { postId: id },
+  });
   return prisma.post.delete({
     where: { id },
   });

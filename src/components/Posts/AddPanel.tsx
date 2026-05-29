@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useAddButton } from "@/components/core/AddButton";
-import { AddPost } from "./core/fileManagment/AddPost";
-import { usePosts } from "./context/PostContext";
-import { MyButton } from "./core/MyButton";
+import { AddPost } from "../core/fileManagment/AddPost";
+import { usePosts } from "../context/PostContext";
+import { MyButton } from "../core/MyButton";
 
 const Category = [
   "Aktualności",
@@ -24,7 +24,7 @@ export default function AddPanel() {
   const { add } = usePosts();
 
   const handleAddPost = async () => {
-    const { post, blob } = await AddPost(title, category, content, media);
+    const { post, blobs } = await AddPost(title, category, content, media);
 
     add({
       id: post.id,
@@ -32,7 +32,7 @@ export default function AddPanel() {
       category: post.category,
       content: post.content,
       date: post.date.toISOString(),
-      media: [blob],
+      media: blobs,
     });
     toggle();
     setCategory("");

@@ -1,5 +1,5 @@
 "use server";
-import { put } from "@vercel/blob";
+import { put, del } from "@vercel/blob";
 import { extname } from "node:path";
 
 
@@ -17,4 +17,13 @@ export async function PUT(image: File) {
   });
 
   return upload.url;
+}
+
+export async function deleteBlob(url: string[]) {
+  const blob = del(url, {
+    token: process.env.BLOB_READ_WRITE_TOKEN
+  })
+
+  return blob;
+  
 }

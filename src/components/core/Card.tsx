@@ -2,7 +2,7 @@
 
 import { usePosts } from "@/components/context/PostContext";
 import { MyButton } from "@/components/core/MyButton";
-import { deletePost } from "@/components/core/fileManagment/Quarry";
+import { deletePost } from "./fileManagment/DeletePost";
 
 export  function Card({
   id,
@@ -21,13 +21,13 @@ export  function Card({
 }) {
   const  { remove } = usePosts();
 
-  const handleDelete = async (id: number) => {
-    await deletePost(id);
+  const handleDelete = async () => {
+    await deletePost(id, media ?? []);
     remove(id);
   };
 
   return (
-    <div className="min-h-70 w-full flex flex-col bg-slate-700 rounded-3xl">
+    <div className="min-h-80 w-full flex flex-col bg-slate-700 rounded-3xl">
       <div className="h-2/7 items-center justify-center flex flex-col bg-slate-600 rounded-t-3xl">
         <div className="h-1/3 w-2/3 flex flex-row items-center justify-between text-slate-300 p-3">
           <div>{category}</div>
@@ -48,7 +48,7 @@ export  function Card({
       
       <MyButton
         className=" bg-red-600/75 hover:bg-red-700/75 active:bg-red-800/75 self-end m-3"
-        onClick={() => handleDelete(id)}
+        onClick={() => handleDelete()}
       >
         Usuń
       </MyButton>

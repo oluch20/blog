@@ -15,6 +15,7 @@ export function PostPanel() {
           date={new Date(post.date).toLocaleDateString("pl-PL")}
           category={post.category}
           content={post.content ?? ""}
+          media={post.media}
         />
       ))}
     </>
